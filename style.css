@@ -4,22 +4,25 @@
   will-change: transform !important;
 }
 
-/* Base Tile Styling - Tight Crisp Shadows */
+/* Force Tight Dual-Layered Shadows on All Native Wix Inner Tile Elements */
 .gallery-tile-expand-mode,
 .gallery-tile-expand-mode .gallery-item-wrapper,
 .gallery-tile-expand-mode [data-hook="gallery-item"],
-.gallery-tile-expand-mode [data-hook="item-container"] {
-  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.12), 0px 10px 14px 0px rgba(0, 0, 0, 0.06) !important;
+.gallery-tile-expand-mode [data-hook="item-container"],
+.gallery-tile-expand-mode img {
+  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.10), 0px 8px 12px 0px rgba(0, 0, 0, 0.05) !important;
+  filter: none !important;
   transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 300ms cubic-bezier(0.16, 1, 0.3, 1) !important;
   border-radius: 45px !important;
 }
 
-/* Hover/Press State - Tactile Push */
+/* Hover/Press State - Tactile Push (Tight footprint) */
 .gallery-tile-expand-mode:hover,
 .gallery-tile-expand-mode:hover .gallery-item-wrapper,
 .gallery-tile-expand-mode:hover [data-hook="gallery-item"],
-.gallery-tile-expand-mode:hover [data-hook="item-container"] {
-  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.10), 0px 4px 8px 0px rgba(0, 0, 0, 0.05) !important;
+.gallery-tile-expand-mode:hover [data-hook="item-container"],
+.gallery-tile-expand-mode:hover img {
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.08), 0px 4px 6px 0px rgba(0, 0, 0, 0.04) !important;
   transform: scale(0.96) !important;
 }
 
