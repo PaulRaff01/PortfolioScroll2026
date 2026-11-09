@@ -103,8 +103,9 @@
     if (b2) { e.preventDefault(); e.stopPropagation(); smoothGlideTo(1900, 2800); }
   }, true);
 
+  // CHANGED: Bright Blue drop-shadow for floating cards
   function pS2Shd(p) {
-    return p <= 0.01 ? 'none' : 'drop-shadow(0px ' + (8 * p).toFixed(1) + 'px ' + (8 * p).toFixed(1) + 'px rgba(128,128,135,' + (0.105 * p).toFixed(3) + '))';
+    return p <= 0.01 ? 'none' : 'drop-shadow(0px ' + (8 * p).toFixed(1) + 'px ' + (12 * p).toFixed(1) + 'px rgba(0, 140, 255, ' + (0.45 * p).toFixed(3) + '))';
   }
 
   function cCrd(src, hE, lnks, zI = 51) {
@@ -266,9 +267,10 @@
     return 0.9 - 0.05 * ep;
   }
 
+  // CHANGED: Bright Blue box-shadow around the project tiles
   function sST(item, som, sp, ac) {
     const str = som * sp * 0.5 * (ac ? 0.4 : 1);
-    item.style.setProperty('box-shadow', (16 * str).toFixed(2) + 'px ' + (19 * str).toFixed(2) + 'px ' + (30 * str).toFixed(2) + 'px 0 rgba(64,64,71,' + (0.6 * str).toFixed(3) + ')', 'important');
+    item.style.setProperty('box-shadow', (16 * str).toFixed(2) + 'px ' + (19 * str).toFixed(2) + 'px ' + (30 * str).toFixed(2) + 'px 0 rgba(0, 140, 255, ' + (0.6 * str).toFixed(3) + ')', 'important');
     item.querySelectorAll(TO).forEach(el => {
       el.style.setProperty('transition', 'transform 600ms cubic-bezier(0.16,1,0.3,1), opacity 400ms ease', 'important');
       el.style.setProperty('transform', 'scale(' + (ac ? 0.95 : 1) + ')', 'important');
