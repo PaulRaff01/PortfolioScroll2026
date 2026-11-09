@@ -4,7 +4,14 @@
   will-change: transform !important;
 }
 
-/* Force strip ALL native Wix SVG/CSS drop-shadow filters on every inner node */
+/* Hide native Wix text block to avoid double text */
+#comp-mubeboye, 
+#comp-mubeboye * {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Force strip native Wix SVG/CSS drop-shadow filters on child nodes */
 .gallery-tile-expand-mode,
 .gallery-tile-expand-mode *,
 .gallery-tile-expand-mode [data-hook="gallery-item"],
@@ -15,97 +22,101 @@
   -webkit-filter: none !important;
 }
 
-/* Apply Tight Apple Dual Shadow to Stage 3 Tiles Only */
+/* Stage 3 Tight Apple Dual Shadow */
 .gallery-tile-expand-mode {
   box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.12), 0px 8px 14px 0px rgba(0, 0, 0, 0.08) !important;
   transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 300ms cubic-bezier(0.16, 1, 0.3, 1) !important;
   border-radius: 45px !important;
 }
 
-/* Hover/Press State - Tactile Push */
+/* Tactile Push State on Hover */
 .gallery-tile-expand-mode:hover {
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.10), 0px 4px 8px 0px rgba(0, 0, 0, 0.05) !important;
   transform: scale(0.96) !important;
 }
 
-/* Hero Typography Overlay System (z-index: 40 keeps it BEHIND phone cards) */
+/* Hero Overlay - STRICT Z-INDEX 40 TO STAY BEHIND HERO PHONES (z-index 48-51) */
 .pf-heading-container {
-  position: fixed;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
+  position: fixed !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  text-align: center !important;
   z-index: 40 !important;
-  pointer-events: auto;
-  width: 100%;
-  max-width: 1200px;
-  padding: 0 20px;
-  box-sizing: border-box;
+  pointer-events: none;
+  width: 90vw;
+  max-width: 1400px;
 }
 
 .pf-subheading {
-  display: block;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 2.5px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(14px, 1.5vw, 24px);
+  color: #777;
+  letter-spacing: .1em;
   text-transform: uppercase;
-  color: #86868b;
-  margin-bottom: 12px;
+  margin: 0 0 6px 0;
+  display: block;
 }
 
 .pf-mainheading {
-  display: block;
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: clamp(36px, 5.5vw, 76px);
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(40px, 5.5vw, 100px);
   font-weight: 700;
-  letter-spacing: -0.02em;
-  color: #1d1d1f;
-  margin: 0 0 16px 0;
-  line-height: 1.05;
+  color: #222;
+  letter-spacing: -.02em;
+  line-height: .95;
+  text-transform: uppercase;
+  margin: 0;
+  display: block;
+  white-space: nowrap;
 }
 
 .pf-tagline {
-  display: block;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  font-size: 15px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(13px, 1.4vw, 24px);
   font-weight: 400;
-  color: #515154;
+  color: #777;
+  letter-spacing: 0;
+  margin: 10px 0 0 0;
+  display: block;
+  white-space: nowrap;
 }
 
 .pf-tagline a {
-  color: #0066cc;
-  text-decoration: none;
-}
-
-.pf-tagline a:hover {
+  color: #777;
   text-decoration: underline;
+  text-underline-offset: 3px;
+  pointer-events: auto;
 }
 
-/* Smooth Scroll Arrow Indicator */
 .pf-arrow-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
-  margin-top: 28px;
+  width: 32px;
+  height: 32px;
+  border: 1px solid #777;
   border-radius: 50%;
-  background: rgba(0, 0, 0, 0.04);
+  margin-top: 20px;
   cursor: pointer;
-  transition: transform 300ms ease, background-color 300ms ease, opacity 600ms ease;
-}
-
-.pf-arrow-btn:hover {
-  background: rgba(0, 0, 0, 0.08);
-  transform: translateY(3px);
+  pointer-events: auto !important;
+  opacity: 0;
+  transition: opacity 1200ms ease;
+  background: transparent;
+  text-decoration: none;
 }
 
 .pf-arrow-btn svg {
-  width: 20px;
-  height: 20px;
-  stroke: #1d1d1f;
-  stroke-width: 2;
+  width: 12px;
+  height: 12px;
+  stroke: #777;
+  stroke-width: 1.5;
   fill: none;
   stroke-linecap: round;
   stroke-linejoin: round;
+}
+
+@media (max-width: 768px) {
+  .pf-heading-container {
+    display: none !important;
+  }
 }
